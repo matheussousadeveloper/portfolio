@@ -45,7 +45,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 
-
+window.addEventListener('scroll', function () {
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    if (window.scrollY > 50) { // Ajuste o valor conforme necessário
+        scrollIndicator.style.display = 'none';
+    } else {
+        scrollIndicator.style.display = 'block';
+    }
+});  
 
 
 
