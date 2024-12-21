@@ -285,3 +285,59 @@ h1 {
 
 
 
+/* Posiciona o indicador na parte inferior */
+.scroll-indicator {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: #333; /* Escolha a cor que combina com o tema do site */
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+/* Estilo do texto */
+.scroll-indicator span {
+  display: block;
+  margin-bottom: 5px;
+  animation: fade 2s infinite; /* Texto piscando suavemente */
+}
+
+/* Estilo da seta */
+.scroll-indicator .arrow {
+  position: absolute;
+    bottom: 20px;
+    left: 50%;
+  width: 24px;
+  height: 24px;
+  border-right: 4px solid #333;
+  border-bottom: 4px solid #333;
+  transform: rotate(45deg);
+  animation: bounce 2s infinite;
+  display: flex;
+  align-items: center;
+}
+
+/* Animação da seta subindo e descendo */
+@keyframes bounce {
+  0%, 100% {
+      transform: translateY(0) rotate(45deg);
+  }
+  50% {
+      transform: translateY(10px) rotate(45deg);
+  }
+}
+
+/* Animação do texto piscando */
+@keyframes fade {
+  0%, 100% {
+      opacity: 1;
+  }
+  50% {
+      opacity: 0.5;
+  }
+}
+
+
+
