@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botões</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: black;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dialog {
+            background-color: rgb(24, 24, 27);
+            border-radius: 8px;
+            width: 90%;
+            max-width: 425px;
+            position: relative;
+            border: 1px solid rgb(39, 39, 42);
+            overflow: hidden;
+        }
+
+        .dialog-header {
+            background: linear-gradient(to bottom, rgba(16, 185, 129, 0.1), transparent);
+            padding: 24px;
+            position: relative;
+        }
+
+        .close-button {
+            position: absolute;
+            right: 24px;
+            top: 24px;
+            background: none;
+            border: none;
+            color: rgb(161, 161, 170);
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 4px;
+        }
+
+        .close-button:hover {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .dialog-title {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 4px;
+        }
+
+        .dialog-subtitle {
+            color: rgb(161, 161, 170);
+            font-size: 14px;
+        }
+
+        .dialog-content {
+            padding: 24px;
+        }
+
+        .permission-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+
+        .permission-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .icon-wrapper {
+            background-color: rgb(39, 39, 42);
+            padding: 8px;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-wrapper svg {
+            width: 24px;
+            height: 24px;
+            color: white;
+        }
+
+        .permission-text h3 {
+            color: white;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .permission-text p {
+            color: rgb(161, 161, 170);
+            font-size: 14px;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgb(39, 39, 42);
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: rgb(16, 185, 129);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(20px);
+        }
+
+        .continue-button {
+            background-color: rgb(37, 99, 235);
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 15px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .continue-button:hover {
+            background-color: rgb(29, 78, 216);
+        }
+    </style>
+</head>
+<body>
+    <div class="dialog">
+        <div class="dialog-header">
+            <button class="close-button" onclick="closeDialog()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 6L6 18M6 6l12 12"/>
+                </svg>
+            </button>
+            <h2 class="dialog-title">Espere um pouco...</h2>
+            <p class="dialog-subtitle">dê acesso aos seus dispositivos</p>
+        </div>
+        <div class="dialog-content">
+            <div class="permission-item">
+                <div class="permission-info">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
+                        </svg>
+                    </div>
+                    <div class="permission-text">
+                        <h3>Microfone</h3>
+                        <p>Para que todos lhe ouçam</p>
+                    </div>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" checked onchange="updatePermission('microphone', this.checked)">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="permission-item">
+                <div class="permission-info">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <div class="permission-text">
+                        <h3>Câmera</h3>
+                        <p>Para que todos lhe vejam</p>
+                    </div>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" onchange="updatePermission('camera', this.checked)">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="permission-item">
+                <div class="permission-info">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <div class="permission-text">
+                        <h3>Compartilhamento de tela</h3>
+                        <p>Para que vejam sua tela</p>
+                    </div>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" onchange="updatePermission('screen', this.checked)">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <button class="continue-button" onclick="continueAction()">Continue</button>
+        </div>
+    </div>
+
+    <script>
+        const permissions = {
+            microphone: true,
+            camera: false,
+            screen: false
+        };
+
+        function updatePermission(type, value) {
+            permissions[type] = value;
+            console.log('Permissions updated:', permissions);
+        }
+
+        function closeDialog() {
+            const dialog = document.querySelector('.dialog');
+            dialog.style.opacity = '0';
+            dialog.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                dialog.style.display = 'none';
+            }, 200);
+        }
+
+        function continueAction() {
+            console.log('Continuing with permissions:', permissions);
+            closeDialog();
+        }
+    </script>
+</body>
+</html>

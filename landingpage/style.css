@@ -1,0 +1,208 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: black;
+  color: white;
+}
+
+.container {
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.hero {
+  height: 100vh;
+  position: relative;
+  background: url('imagens/teresina.jpeg') center/cover;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+nav {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 5rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  margin-left: 2rem;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #2dd4bf;
+}
+
+.hero-content {
+  position: relative;
+  padding: 0 5rem;
+  max-width: 800px;
+  margin-top: 10vh;
+}
+
+.hero-content h2 {
+  font-size: 4rem;
+  color: #2dd4bf;
+  margin-bottom: 1.5rem;
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
+  line-height: 1.6;
+}
+
+.stats {
+  display: flex;
+  gap: 5rem;
+}
+
+.stat .number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #2dd4bf;
+}
+
+.stat .label {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+/* Tours Section */
+.tours {
+  padding: 5rem;
+}
+
+.tours h3 {
+  color: #2dd4bf;
+  font-size: 2rem;
+  margin-bottom: 3rem;
+}
+
+.tour-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.tour-card {
+  position: relative;
+  height: 320px;
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+.tour-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tour-card:hover .overlay {
+  opacity: 1;
+}
+
+/* Discover Section */
+.discover {
+  padding: 5rem;
+}
+
+.discover h3 {
+  color: #2dd4bf;
+  font-size: 3rem;
+  margin-bottom: 3rem;
+  line-height: 1.2;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.video-card {
+  position: relative;
+  height: 200px;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.video-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.play-button {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.play-button::before {
+  content: '▶';
+  color: white;
+  font-size: 2rem;
+}
+
+/* Footer */
+footer {
+  padding: 2rem;
+  border-top: 1px solid #333;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.social-icons i {
+  font-size: 1.5rem;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.social-icons i:hover {
+  color: #2dd4bf;
+}
+
+/* Icon Classes */
+.icon-instagram::before { content: '📷'; }
+.icon-facebook::before { content: '📘'; }
+.icon-send::before { content: '✈️'; }
+.icon-twitter::before { content: '🐦'; }
